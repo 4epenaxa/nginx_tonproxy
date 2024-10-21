@@ -34,7 +34,7 @@ services:
     network_mode: host
     volumes:
       - /opt/ton-proxy/keyring:/opt/ton-proxy/keyring
-    command: "rldp-http-proxy -a ${server_ip}:3334 -R '*'@127.0.0.1:80 -C global.config.json -A ${adnl_code_10000} -d"
+    command: "rldp-http-proxy -a ${server_ip}:3334 -R '*'@127.0.0.1:80 -C global.config.json -A ${adnl_code} -d"
     logging:
       driver: json-file
       options:
