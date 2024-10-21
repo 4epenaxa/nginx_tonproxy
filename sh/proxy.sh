@@ -14,3 +14,32 @@ adnl_code=$(awk '{print $2}' /opt/ton-proxy/adnl_code.txt)
 
 # Разрешаем порт 3333 для UDP через ufw
 ufw allow 3333/udp
+
+# Создание файла docker-compose.yml
+cat <<EOL > docker-compose.yml
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+#      - ./my_projects/default.conf:/etc/nginx/conf.d/default.conf
+      - ./my_projects/hello_world/:/usr/share/nginx/html/
+    restart: always
+  tonproxy:
+    image: tonstakers/ton-proxy:latest
+    container_name: tonproxy
+    hostname: tonproxy
+    network_mode: host
+    volumes:
+      - /opt/ton-proxy/keyring:/opt/ton-proxy/keyring
+    command: "rldp-http-proxy -a ${server_ip}:3334 -R '*'@127.0.0.1:80 -C global.config.json -A ${adnl_code_10000} -d"
+    logging:
+      driver: json-file
+      options:
+        max-size: 100m
+        max-file: '2'
+EOL
+
+echo_color "docker-compose.yml создан успешно"

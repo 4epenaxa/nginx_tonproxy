@@ -34,11 +34,7 @@ source ./sh/proxy.sh
 
 # Завершение скрипта
 echo_color "Настройка завершена.
-Замените в 18 строке docker-compose.yml
-ip адрес на ваш ${server_ip}
-и adnl_code на ваш ${adnl_code}
-
-После этого вы можете запустить Docker Compose"
+Теперь вы можете запустить Docker Compose"
 echo "docker-compose up -d
 "
 
