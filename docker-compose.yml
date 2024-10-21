@@ -5,19 +5,19 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./my_projects/default.conf:/etc/nginx/conf.d/default.conf
-      - ./my_projects/hello_world:/var/www/hello_world
+#      - ./my_projects/default.conf:/etc/nginx/conf.d/default.conf
+      - ./my_projects/hello_world/:/usr/share/nginx/html/
     restart: always
-  # tonproxy:
-  #   image: tonstakers/ton-proxy:latest
-  #   container_name: tonproxy
-  #   hostname: tonproxy
-  #   network_mode: host
-  #   volumes:
-  #     - /opt/ton-proxy/keyring:/opt/ton-proxy/keyring
-  #   command: "rldp-http-proxy -a {server_ip}:3333 -R '*'@127.0.0.1:10000 -C global.config.json -A {adnl_code} -d"
-  #   logging:
-  #     driver: json-file
-  #     options:
-  #       max-size: 100m
-  #       max-file: '2'
+  tonproxy:
+    image: tonstakers/ton-proxy:latest
+    container_name: tonproxy
+    hostname: tonproxy
+    network_mode: host
+    volumes:
+      - /opt/ton-proxy/keyring:/opt/ton-proxy/keyring
+    command: "rldp-http-proxy -a {server_ip}:3333 -R '*'@127.0.0.1:80 -C global.config.json -A {adnl_code} -d"
+    logging:
+      driver: json-file
+      options:
+        max-size: 100m
+        max-file: '2'

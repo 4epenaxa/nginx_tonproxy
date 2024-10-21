@@ -46,5 +46,5 @@ echo "docker-compose up -d
 echo_color "После запуска docker-compose вы можете проверить работу ADNL-сайта по адресу"
 echo "https://${adnl_code}.adnl.run"
 echo_color "и сравнить со страничками по прямому адресу"
-echo "http://${server_ip}:10000
+echo "http://${server_ip}:80
 "
