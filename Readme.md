@@ -1,8 +1,8 @@
 #### Запуск:  
 
 ```
-git clone https://gitverse.ru/4epenaxa/nginx_db_tonproxy.git
-cd nginx_db_tonproxy
+git clone https://github.com/4epenaxa/nginx_tonproxy.git
+cd nginx_tonproxy
 chmod +x setup.sh
 ./setup.sh
 ```   
