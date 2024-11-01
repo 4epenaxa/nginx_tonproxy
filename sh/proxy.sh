@@ -17,7 +17,6 @@ ufw allow 3333/udp
 
 # Создание файла docker-compose.yml
 cat <<EOL > docker-compose.yml
-version: '3'
 services:
   nginx:
     image: nginx:latest
